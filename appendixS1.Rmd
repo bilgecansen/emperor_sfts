@@ -1,0 +1,66 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+### Horseshoe priors
+
+We model the prior variances for covariate slope parameters as the product of a global shrinkage term, $\tau$, that pulls all slopes towards 0, and a slope-specific $\lambda_m$ parameter, that enables slope $m$ to escape this pull.
+
+\begin{align}
+\beta_m &\sim \text{N}(0,\tau \lambda_m) \\
+\lambda_m &\sim \textrm{Half-Cauchy}(0,1) \\
+\tau &\sim \textrm{Half-Cauchy}(0,\tau_0) 
+\end{align}
+
+To ease convergence issues caused by horseshoe priors, we follow Piironen and Vehtari (2017) and regularize $\lambda_m$ and $\tau_0$ such that they are functions of additional parameters
+
+### Regularizing horseshoe priors
+
+The functional form of horseshoe priors is particularly hard to converge, so an alternative formulation, named regularized horseshoe priors, was proposed by Piironen and Vehtari (2017). In regularized horseshoe priors, $\lambda_m$ and $\tau_0$ is derived as functions of other parameters, which eases convergence:
+
+\begin{align}
+\beta_m &\sim \text{N}(0,\tau \tilde{\lambda}_m) \\
+\tilde{\lambda}_m &= \frac{c \lambda_m}{\sqrt{c^2 + \tau^2 \lambda_m^2}}\\
+\lambda_m &\sim \text{C}^+(0,1) \\
+c^2 &\sim \text{G}^{-1} (\frac{\nu}{2}, \frac{\nu}{2} s^2) \\
+\tau &\sim \text{C}^+(0,\tau_0) \\
+\tau_0 &= \frac{m_0}{M-m_0} \times \frac{\sigma}{\sqrt{N}}
+\end{align}
+
+where, $\text{G}^{-1}$ is inverse gamma distribution, $m_0$ is the expected number of effective parameters (slopes), $M$ is the total number of parameters, $\sigma$ is the estimated standard deviation of the data, and $N$ is the sample size. $m_0$, $s$, and $\nu$ is chosen by the modeler.
+
+We fit all models (see main text) in Stan (Stan Development Team 2022a), using the R package rstan (Stan Development Team 2022b) in the R statistical computing environment (R Core Team 2021). All models converged with $\hat{R}$ values lower than 1.1, effective sample sizes higher than 1000, and no divergent transitions.
+
+### References
+
+Piironen, J., and A. Vehtari. 2017. “Sparsity information and regularization in the horseshoe and other shrinkage priors.” Electronic Journal of Statistics 11 (2).
+
+R Core Team. 2021. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.
+
+Stan Development Team. 2022a. RStan: the R interface to Stan. Stan Modeling Language Users Guide and Reference Manual, Version 2.29. https://mc-stan.org/.
+- 2022b. RStan: the R interface to Stan. R package version 2.21.5. https://mc-stan.org/.
+
+### Figures
+
+![](fig_S1.jpeg)
+**Figure S1**. Univariate relationship between sea ice concentration in the laying period and index of adult abundance at attendance during spring. Each point represents the average abundance of a single colony between 2009-2018 as estimated by the colony-abundance model, vertical lines show the 95% credible interval of these estimates.
+
+
+### Random forest
+
+We also analyzed average colony abundance using random forests (RF) with 2000 trees and default mtry value (square root of number of variables, 3 in this case). The $R^2$ value was similar at 0.33. It is expected this value to be lower than the linear models we fitted as RF calculate what is called an "out-of-bag error rate", an interval random cross validation method. The identified variables as important were similar to regularized horseshoe regression but RF additionally identified sea ice concentration during the nonbreeding period (Figure S2). We functional relationships fitted with linear models more useful in this case because RF's fitter relationship were too "shallow" and RF's predictions only ranged between log scale abundance of 7 to 8 (Figures S3 and S4), while linear model predictions had better ability to predict smaller colonies. 
+
+![](fig_S2.jpeg)
+
+**Figure S2**. Variable importance values as calculated by random forests. "aice" is sea ice concentration, "fdice" is distance to nearest open water, "feice" is time of emergence, "fbice" is time of breakout. 
+
+![](fig_S3.jpeg)
+
+**Figure S3**. Partial dependence plot between average colony abundance on log scale and sea ice concentration (SIC) during the nonbreeding period.
+
+![](fig_S4.jpeg)
+
+**Figure S4**. Partial dependence plot between average colony abundance on log scale and distance to nearest open wated (NOW) during the rearing period. 
