@@ -5,6 +5,31 @@ output:
   word_document: default
 ---
 
+# Appendix S1
+
+Bilgecan Şen $^{1,2,3*}$, Christian Che-Castaldo $^{2,4}$, Michelle A. LaRue $^{5,6}$,
+Kristen M. Krumhardt $^{7}$, Laura Landrum $^7$, Marika Holland $^7$, Karine Delord $^8$,
+Christophe Barbraud $^8$, and Stephaine Jenovrier $^3$
+
+$^1$ Appalachian Laboratory, University of Maryland Center for Environmental Science, Frostburg, Maryland, United States of America
+
+$^2$ Institute for Advanced Computational Science, Stony Brook University, Stony Brook, New York, United States of America
+
+$^3$ Biology Department, Woods Hole Oceanographic Institution, Woods Hole, Massachusetts, United States of America
+
+$^4$ U.S. Geological Survey, Wisconsin Cooperative Wildlife Research Unit, Department of Forest and Wildlife Ecology, University of Wisconsin-Madison, Madison, WI, 53715, U.S.A.
+
+$^5$ School of Earth and Environment, University of Canterbury, Christchurch, New Zealand
+
+$^6$ Department of Earth and Environmental Sciences, University of Minnesota, Minneapolis, Minnesota, United States of America
+
+$^7$ Climate and Global Dynamics Laboratory, NSF National Center for Atmospheric Research, Boulder, Colorado, United States of America
+
+$^8$ Centre d’Etudes Biologiques de Chize, UMR7372 CNRS-La Rochelle Universite, 79360 Villiers en Bois, France
+
+
+This draft manuscript is distributed solely for purposes of scientific peer review. Its content is deliberative and predecisional, so it must not be disclosed or released by reviewers. Because the manuscript has not yet been approved for publication by the U.S. Geological Survey (USGS), it does not represent any official USGS finding or policy. Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
+
 ### Horseshoe priors
 
 We model the prior variances for covariate slope parameters as the product of a global shrinkage term, $\tau$, that pulls all slopes towards 0, and a slope-specific $\lambda_m$ parameter, that enables slope $m$ to escape this pull.
@@ -34,15 +59,6 @@ where, $\text{G}^{-1}$ is inverse gamma distribution, $m_0$ is the expected numb
 
 We fit all models (see main text) in Stan (Stan Development Team 2022a), using the R package rstan (Stan Development Team 2022b) in the R statistical computing environment (R Core Team 2021). All models converged with $\hat{R}$ values lower than 1.1, effective sample sizes higher than 1000, and no divergent transitions.
 
-### References
-
-Piironen, J., and A. Vehtari. 2017. “Sparsity information and regularization in the horseshoe and other shrinkage priors.” Electronic Journal of Statistics 11 (2).
-
-R Core Team. 2021. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.
-
-Stan Development Team. 2022a. RStan: the R interface to Stan. Stan Modeling Language Users Guide and Reference Manual, Version 2.29. https://mc-stan.org/.
-- 2022b. RStan: the R interface to Stan. R package version 2.21.5. https://mc-stan.org/.
-
 ### Figures
 
 ![](fig_S1.jpeg)
@@ -63,4 +79,13 @@ We also analyzed average colony abundance using random forests (RF) with 2000 tr
 
 ![](fig_S4.jpeg)
 
-**Figure S4**. Partial dependence plot between average colony abundance on log scale and distance to nearest open wated (NOW) during the rearing period. 
+**Figure S4**. Partial dependence plot between average colony abundance on log scale and distance to nearest open wated (NOW) during the rearing period.
+
+### References
+
+Piironen, J., and A. Vehtari. 2017. “Sparsity information and regularization in the horseshoe and other shrinkage priors.” Electronic Journal of Statistics 11 (2).
+
+R Core Team. 2021. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.
+
+Stan Development Team. 2022a. RStan: the R interface to Stan. Stan Modeling Language Users Guide and Reference Manual, Version 2.29. https://mc-stan.org/.
+- 2022b. RStan: the R interface to Stan. R package version 2.21.5. https://mc-stan.org/.
