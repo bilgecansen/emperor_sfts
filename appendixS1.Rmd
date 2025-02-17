@@ -7,28 +7,29 @@ output:
 
 # Appendix S1
 
-Bilgecan Şen $^{1,2,3*}$, Christian Che-Castaldo $^{2,4}$, Michelle A. LaRue $^{5,6}$,
-Kristen M. Krumhardt $^{7}$, Laura Landrum $^7$, Marika Holland $^7$, Karine Delord $^8$,
-Christophe Barbraud $^8$, and Stephaine Jenovrier $^3$
+## Temporal and Spatial Equivalence in Demographic Responses of Emperor Penguins (*Aptenodytes forsteri*) to Environmental Change 
+
+Bilgecan Şen $^{1,2*}$, Christian Che-Castaldo $^{3}$, Michelle A. LaRue $^{4,5}$,
+Kristen M. Krumhardt $^{6}$, Laura Landrum $^6$, Marika Holland $^6$, Karine Delord $^7$,
+Christophe Barbraud $^7$, and Stephaine Jenovrier $^8$
 
 $^1$ Appalachian Laboratory, University of Maryland Center for Environmental Science, Frostburg, Maryland, United States of America
 
 $^2$ Institute for Advanced Computational Science, Stony Brook University, Stony Brook, New York, United States of America
 
-$^3$ Biology Department, Woods Hole Oceanographic Institution, Woods Hole, Massachusetts, United States of America
+$^3$ U.S. Geological Survey, Wisconsin Cooperative Wildlife Research Unit, Department of Forest and Wildlife Ecology, University of Wisconsin-Madison, Madison, WI, 53715, U.S.A.
 
-$^4$ U.S. Geological Survey, Wisconsin Cooperative Wildlife Research Unit, Department of Forest and Wildlife Ecology, University of Wisconsin-Madison, Madison, WI, 53715, U.S.A.
+$^4$ School of Earth and Environment, University of Canterbury, Christchurch, New Zealand
 
-$^5$ School of Earth and Environment, University of Canterbury, Christchurch, New Zealand
+$^5$ Department of Earth and Environmental Sciences, University of Minnesota, Minneapolis, Minnesota, United States of America
 
-$^6$ Department of Earth and Environmental Sciences, University of Minnesota, Minneapolis, Minnesota, United States of America
+$^6$ Climate and Global Dynamics Laboratory, NSF National Center for Atmospheric Research, Boulder, Colorado, United States of America
 
-$^7$ Climate and Global Dynamics Laboratory, NSF National Center for Atmospheric Research, Boulder, Colorado, United States of America
+$^7$ Centre d’Etudes Biologiques de Chize, UMR7372 CNRS-La Rochelle Universite, 79360 Villiers en Bois, France
 
-$^8$ Centre d’Etudes Biologiques de Chize, UMR7372 CNRS-La Rochelle Universite, 79360 Villiers en Bois, France
+$^8$ Biology Department, Woods Hole Oceanographic Institution, Woods Hole, Massachusetts, United States of America
 
-
-This draft manuscript is distributed solely for purposes of scientific peer review. Its content is deliberative and predecisional, so it must not be disclosed or released by reviewers. Because the manuscript has not yet been approved for publication by the U.S. Geological Survey (USGS), it does not represent any official USGS finding or policy. Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
+Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
 
 ### Horseshoe priors
 
@@ -65,7 +66,7 @@ We fit all models (see main text) in Stan (Stan Development Team 2022a), using t
 **Figure S1**. Univariate relationship between sea ice concentration in the laying period and index of adult abundance at attendance during spring. Each point represents the average abundance of a single colony between 2009-2018 as estimated by the colony-abundance model, vertical lines show the 95% credible interval of these estimates.
 
 
-### Random forest
+### Random forests
 
 We also analyzed average colony abundance using random forests (RF) with 2000 trees and default mtry value (square root of number of variables, 3 in this case). The $R^2$ value was similar at 0.33. It is expected this value to be lower than the linear models we fitted as RF calculate what is called an "out-of-bag error rate", an interval random cross validation method. The identified variables as important were similar to regularized horseshoe regression but RF additionally identified sea ice concentration during the nonbreeding period (Figure S2). We functional relationships fitted with linear models more useful in this case because RF's fitter relationship were too "shallow" and RF's predictions only ranged between log scale abundance of 7 to 8 (Figures S3 and S4), while linear model predictions had better ability to predict smaller colonies. 
 

@@ -673,12 +673,12 @@ ggplot(data = dat_time) +
   theme(panel.border = element_blank(),
         #axis.title.x = element_blank(),
         panel.grid.minor = element_blank(),
-        panel.grid.major = element_blank(),
+        #panel.grid.major = element_blank(),
         legend.title = element_blank(),
         legend.position = "bottom")
 
-ggsave("fig4.pdf", width = 150, height = 120, units = "mm", dpi = 600)
-ggsave("fig4.jpeg", width = 150, height = 120, units = "mm", dpi = 600)
+ggsave("fig4.pdf", width = 150, height = 100, units = "mm", dpi = 600)
+ggsave("fig4.jpeg", width = 150, height = 100, units = "mm", dpi = 600)
 
 ggplot(data = filter(dat_time, group == "Breeding Success")) +
   geom_line(aes(x = year, y = t), size = 1.1, alpha = 0.8, 
